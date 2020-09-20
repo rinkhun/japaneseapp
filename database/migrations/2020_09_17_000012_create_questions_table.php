@@ -21,10 +21,9 @@ class CreateQuestionsTable extends Migration
     public function up()
     {
         Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id();
+            $table->bigIncrements('id');
             $table->text('content');
-            $table->integer('exercise_id');
+            $table->unsignedBigInteger('exercise_id');
 
             $table->index(["exercise_id"], 'fk_questions_exercises1_idx');
             $table->nullableTimestamps();

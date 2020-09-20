@@ -21,12 +21,11 @@ class CreateKnjExamplesTable extends Migration
     public function up()
     {
         Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('kanji');
             $table->string('hiragana')->nullable();
             $table->string('mean');
-            $table->integer('kanji_id');
+            $table->unsignedBigInteger('kanji_id');
 
             $table->index(["kanji_id"], 'fk_knj_examples_kanjis1_idx');
             $table->nullableTimestamps();

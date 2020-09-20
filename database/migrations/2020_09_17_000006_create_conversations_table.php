@@ -21,13 +21,12 @@ class CreateConversationsTable extends Migration
     public function up()
     {
         Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('content');
             $table->string('actor', 45);
             $table->string('gender', 45);
             $table->integer('order_no');
-            $table->integer('lesson_id');
+            $table->unsignedBigInteger('lesson_id');
 
             $table->index(["lesson_id"], 'fk_sentences_lessons1_idx');
             $table->nullableTimestamps();

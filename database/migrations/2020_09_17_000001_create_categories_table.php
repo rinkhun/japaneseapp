@@ -21,8 +21,7 @@ class CreateCategoriesTable extends Migration
     public function up()
     {
         Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('name')->nullable()->default(null);
             $table->string('icon')->nullable();
             $table->nullableTimestamps();

@@ -21,9 +21,8 @@ class CreateVcbExamplesTable extends Migration
     public function up()
     {
         Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id();
-            $table->integer('vocabulary_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('vocabulary_id');
             $table->text('examples')->nullable();
 
             $table->index(["vocabulary_id"], 'fk_examples_vocabularies1_idx');

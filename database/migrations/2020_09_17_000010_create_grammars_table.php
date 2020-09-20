@@ -21,12 +21,11 @@ class CreateGrammarsTable extends Migration
     public function up()
     {
         Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('title');
             $table->string('mean');
             $table->text('using')->nullable()->default(null);
-            $table->integer('lesson_id')->nullable()->default(null);
+            $table->unsignedBigInteger('lesson_id')->nullable()->default(null);
 
             $table->index(["lesson_id"], 'fk_grammars_lessons1_idx');
             $table->nullableTimestamps();

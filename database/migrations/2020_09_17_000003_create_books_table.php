@@ -21,11 +21,10 @@ class CreateBooksTable extends Migration
     public function up()
     {
         Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('img')->nullable()->default(null);
-            $table->integer('category_id');
+            $table->unsignedBigInteger('category_id');
 
             $table->index(["category_id"], 'fk_books_categories1_idx');
             $table->nullableTimestamps();
@@ -43,8 +42,10 @@ class CreateBooksTable extends Migration
      *
      * @return void
      */
-     public function down()
-     {
-       Schema::dropIfExists($this->tableName);
-     }
+    public function down()
+    {
+        Schema::dropIndex('fk_books_categories1_idx');
+        Schema::dropForeign('fk_books_categories1_idx');
+        Schema::dropIfExists($this->tableName);
+    }
 }

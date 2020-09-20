@@ -21,11 +21,10 @@ class CreateGrmExamplesTable extends Migration
     public function up()
     {
         Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('japanese');
             $table->string('vietnamese');
-            $table->integer('grammar_id');
+            $table->unsignedBigInteger('grammar_id');
 
             $table->index(["grammar_id"], 'fk_grm_examples_grammars1_idx');
             $table->nullableTimestamps();

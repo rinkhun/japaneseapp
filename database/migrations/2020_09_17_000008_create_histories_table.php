@@ -21,9 +21,8 @@ class CreateHistoriesTable extends Migration
     public function up()
     {
         Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id();
-            $table->integer('lesson_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('lesson_id');
             $table->unsignedBigInteger('user_id');
             $table->string('sel_content')->nullable()->comment('noi dung chon hoc');
 

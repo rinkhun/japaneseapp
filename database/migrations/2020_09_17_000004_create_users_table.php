@@ -21,8 +21,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('first_name', 45);
             $table->string('last_name', 45);
             $table->string('email');
@@ -30,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->tinyInteger('del_flg')->nullable()->default('0');
-            $table->integer('saler_id')->nullable()->default(null);
+            $table->unsignedBigInteger('saler_id')->nullable()->default(null);
 
             $table->index(["saler_id"], 'fk_users_salers_idx');
 

@@ -21,12 +21,11 @@ class CreateVocabulariesTable extends Migration
     public function up()
     {
         Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('kanji')->nullable()->default(null);
             $table->string('hiragana')->nullable()->default(null);
             $table->string('mean');
-            $table->integer('lesson_id')->nullable()->default(null);
+            $table->unsignedBigInteger('lesson_id')->nullable()->default(null);
 
             $table->index(["lesson_id"], 'fk_vocabularies_lessons1_idx');
             $table->nullableTimestamps();

@@ -21,11 +21,10 @@ class CreateExercisesTable extends Migration
     public function up()
     {
         Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('title');
             $table->text('description')->nullable()->default(null);
-            $table->integer('lesson_id')->nullable()->default(null);
+            $table->unsignedBigInteger('lesson_id')->nullable()->default(null);
 
             $table->index(["lesson_id"], 'fk_exercises_lessons1_idx');
             $table->nullableTimestamps();

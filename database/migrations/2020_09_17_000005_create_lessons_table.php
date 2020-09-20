@@ -21,12 +21,11 @@ class CreateLessonsTable extends Migration
     public function up()
     {
         Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('img')->nullable();
             $table->text('description')->nullable();
-            $table->integer('book_id');
+            $table->unsignedBigInteger('book_id');
 
             $table->index(["book_id"], 'fk_lessons_books1_idx');
             $table->nullableTimestamps();
