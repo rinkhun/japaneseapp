@@ -17,7 +17,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name',
+        'last_name',
+        'email',
+        'email_verified_at',
+        'del_flg',
+        'saler_id',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -35,6 +42,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
+        'id' => 'integer',
+        'first_name' => 'string',
+        'last_name' => 'string',
+        'email' => 'string',
+        'password' => 'string',
         'email_verified_at' => 'datetime',
+        'remember_token' => 'string',
+        'del_flg' => 'boolean',
+        'saler_id' => 'integer',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
 }
