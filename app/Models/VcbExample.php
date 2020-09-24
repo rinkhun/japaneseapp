@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class VcbExample extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'vocabulary_id',
         'examples',
@@ -19,4 +19,9 @@ class VcbExample extends Model
         'vocabulary_id' => 'integer',
         'examples' => 'string',
     ];
+
+    public function vocabulary()
+    {
+        return $this->belongsTo('App\Models\Vocabulary');
+    }
 }

@@ -17,7 +17,10 @@ class Category extends Model
     protected $cats = [
         'id'=>'integer',
         'name'=>'string',
-        'icon'=>'string',
-       
+        'icon'=>'string', 
     ];
+
+    public function book(){
+        return $this->hasMany('App\Models\Book');
+    }
 }

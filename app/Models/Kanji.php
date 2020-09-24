@@ -30,4 +30,12 @@ class Kanji extends Model
         'lesson_id'=>'integer',
 
     ];  
+
+    public function lesson(){
+        return $this->belongsTo('App\Models\Lesson');
+    }
+
+    public function knjExamples(){
+        return $this->hasMany('App\Models\KnjExample');
+    }
 }

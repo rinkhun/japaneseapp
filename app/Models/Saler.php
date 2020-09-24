@@ -33,4 +33,8 @@ class Saler extends Model
         'email'=>'string',
         'password'=>'string',
     ];
+
+    public function users(){
+        return $this->hasMany('App\Models\User');
+    }
 }

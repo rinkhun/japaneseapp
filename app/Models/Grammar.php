@@ -17,11 +17,21 @@ class Grammar extends Model
     ];
 
     protected $cats = [
-        'id'=>'integer',
-        'title'=>'string',
-        'mean'=>'string',
-        'using'=>'string',
-        'lesson_id'=>'integer',
-       
+        'id' => 'integer',
+        'title' => 'string',
+        'mean' => 'string',
+        'using' => 'string',
+        'lesson_id' => 'integer',
+
     ];
+
+    public function lesson()
+    {
+        return $this->belongsTo('App\Models\Lesson');
+    }
+
+    public function grmExamples()
+    {
+        return $this->hasMany('App\Models\GrmExample');
+    }
 }

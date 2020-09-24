@@ -23,4 +23,14 @@ class Book extends Model
         'img'=>'string',
         'category_id'=>'integer',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category');
+    }
+
+    public function lessons()
+    {
+        return $this->hasMany('App\Models\Lesson');
+    }
 }

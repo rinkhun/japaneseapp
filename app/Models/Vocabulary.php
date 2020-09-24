@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vocabulary extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
 
         'kanji',
@@ -21,7 +21,17 @@ class Vocabulary extends Model
         'id' => 'integer',
         'kanji' => 'string',
         'hiragana' => 'string',
-        'mean'=>'string',
-        'lesson_id'=>'integer',
+        'mean' => 'string',
+        'lesson_id' => 'integer',
     ];
+
+    public function lesson()
+    {
+        return $this->belongsTo('App\Models\Lesson');
+    }
+
+    public function vocabularies()
+    {
+        return $this->hasMany('App\Models\VcbExample');
+    }
 }
