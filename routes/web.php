@@ -21,3 +21,8 @@ Route::get('/', function () {
 Route::get('admin/login',[AdminController::class,'returnViewlogin'])->name('admin.login');
 
 Route::post('admin/login',[AdminController::class,'login'])->name('admin.login');
+
+Route::get('test-middleware',function(){
+    return 'thành công';
+})->middleware('admin');
+

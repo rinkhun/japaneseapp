@@ -133,6 +133,17 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+
+        'email' => [
+            'required' => ':attribute Không được để trống',
+            'email'=>':attributes nhập sai'
+        ],
+
+
+        'password' => [
+            'required' => ':attribute không được để trống',
+            'min'=>':attributes nhất 8 ký tự'
+        ],
     ],
 
     /*
@@ -146,6 +157,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'email'=>'email',
+        'password'=>'mật khẩu'
+    ],
 
 ];

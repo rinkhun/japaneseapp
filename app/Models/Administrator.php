@@ -27,4 +27,9 @@ class Administrator extends  Authenticatable
         'name' => 'string',
         'password' => 'string',
     ];
+
+    public static  $rule_login=[
+            'email' => 'required|email|max:255',
+            'password' => 'required|min:8',
+    ];
 }
