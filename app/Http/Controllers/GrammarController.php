@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use Illuminate\Database\Grammar;
 use Illuminate\Http\Request;
-use Validator;
-use Redirect;
-use Storage;
 
-class CategoryController extends Controller
+class GrammarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $grammar = Grammar::find($id);
 
-        return view('admins.categories.index')->with('categories', $categories);
+        return view ('admins.grammars.show')->with('grammar',$grammar);
     }
 
     /**
@@ -29,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admins.categories.create');
+        //
     }
 
     /**
@@ -40,15 +37,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Validator::make($request->all(), Category::$create_rule)->validate();
-        $category = new Category();
-        $category->name = $request->name;
-
-        $icon_url = Storage::disk('public')->put('icons', $request->file('icon'));
-        $category->icon = $icon_url;
-
-        $category->save();
-        return Redirect::route('admin.categories.index')->with('success','Đã thêm thành công');
+        //
     }
 
     /**
@@ -59,9 +48,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::find($id);
-
-        return view ('admins.categories.show')->with('category',$category);
+        //
     }
 
     /**
@@ -95,14 +82,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
-
-        if(isset($category)){
-            $category->delete();
-
-            return Redirect::back()->with('success','Xoa Category Thanh Cong');
-        }
-        
-        return Redirect::back()->with('fail','category khong ton tai');
+        //
     }
 }
