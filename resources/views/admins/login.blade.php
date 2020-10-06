@@ -8,6 +8,11 @@
     <form action="{{ route('admin.login') }}" method="POST">
         @csrf
         <div class="form-group">
+            @if (session('logout_success'))
+                <p>{{ session('logout_success') }}</p>
+            @endif
+        </div>
+        <div class="form-group">
             <label for="email">Tài Khoản Email:</label>
             <input name="email" type="email" class="form-control" placeholder="Enter email" id="email">
         </div>
@@ -21,11 +26,9 @@
         @error('password')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
-        {{-- <div class="form-group form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox"> Remember me
-            </label>
-        </div> --}}
         <button type="submit" class="btn btn-primary">Đăng Nhập</button>
     </form>
 @endsection
+
+
+

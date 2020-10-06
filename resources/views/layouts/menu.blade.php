@@ -15,8 +15,8 @@
                 <a class="nav-link" href="#">Link</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
                     Dropdown
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -29,12 +29,18 @@
             <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
             </li> --}}
-            <li class="nav-item active">
-                <a class="nav-link" href="{{route('admin.login')}}">Đăng Nhập <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Đăng Ký <span class="sr-only">(current)</span></a>
-            </li>
+            @auth('admins')
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ route('admin.logout') }}">Đăng Xuất</a>
+                </li>
+            @endauth
+            @unless(Request::is('admin/login'))
+                @guest('admins')
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('admin.login') }}">Đăng Nhập</a>
+                    </li>
+                @endguest
+            @endunless
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

@@ -20,6 +20,11 @@ class Category extends Model
         'icon'=>'string', 
     ];
 
+    public static $create_rule=[
+        'name'=>'required|string',
+        'icon'=>'required|file',
+    ];
+
     public function book(){
         return $this->hasMany('App\Models\Book');
     }

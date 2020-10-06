@@ -30,6 +30,6 @@ class Administrator extends  Authenticatable
 
     public static  $rule_login=[
             'email' => 'required|email|max:255',
-            'password' => 'required|min:8',
+            'password' => 'required|min:6',
     ];
 }
