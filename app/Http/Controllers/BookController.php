@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class BookController extends Controller
 {
@@ -26,7 +29,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('admins.books.create');
     }
 
     /**
@@ -37,7 +40,15 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Validator::make($request->all(), Book::$create_rule)->validate();
+        $book = new Book();
+        $book->name = $request->name;
+
+        $img_path = Storage::disk('public')->put('images', $request->file('img'));
+        $book->img = $img_path;
+
+        $book->save();
+        return Redirect::route('admin.books.index')->with('success', 'Đã thêm thành công');
     }
 
     /**
@@ -50,7 +61,7 @@ class BookController extends Controller
     {
         $book = Book::find($id);
 
-        return view ('admins.books.show')->with('book',$book);
+        return view('admins.books.show')->with('book', $book);
     }
 
     /**
@@ -84,6 +95,14 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $book = Book::find($id);
+
+        if (isset($book)) {
+            $book->delete();
+
+            return Redirect::back()->with('success', 'Xoa Category Thanh Cong');
+        }
+
+        return Redirect::back()->with('fail', 'category khong ton tai');
     }
 }

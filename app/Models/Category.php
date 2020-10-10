@@ -15,17 +15,31 @@ class Category extends Model
     ];
 
     protected $cats = [
-        'id'=>'integer',
-        'name'=>'string',
-        'icon'=>'string', 
+        'id' => 'integer',
+        'name' => 'string',
+        'icon' => 'string',
     ];
 
-    public static $create_rule=[
-        'name'=>'required|string',
-        'icon'=>'required|file',
+    public static $create_rule = [
+        'name' => 'required|string',
+        'icon' => 'required|file',
     ];
 
-    public function book(){
+    public static $update_rule = [
+        'name' => 'required|string',
+    ];
+
+    public function books()
+    {
         return $this->hasMany('App\Models\Book');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($category) {
+            $category->books()->delete();
+        });
     }
 }

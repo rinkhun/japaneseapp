@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Symfony\Component\HttpFoundation\Cookie;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,4 +26,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
+    
 }
+

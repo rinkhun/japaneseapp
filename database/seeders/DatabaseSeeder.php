@@ -22,34 +22,29 @@ class DatabaseSeeder extends Seeder
         //          'password' => Hash::make('123456'),
         //      ]);
 
-        DB::table('administrators')->insert([
-            'name' => 'rin@gmail.com',
-            'email' => 'rin@gmail.com',
-            'password' => Hash::make('123456'),
+
+        DB::table('categories')->insert([
+            'id' => '1',
+            'name' => 'Sách Minano Nihongo',
         ]);
 
-        // DB::table('categories')->insert([
-        //     'id' => '1',
-        //     'name' => 'Sách Minano Nihongo',
-        // ]);
+        DB::table('books')->insert([
+            'name' => 'Minano Nihongo N5',
+            'img' => '',
+            'category_id' => 1,
 
-        // DB::table('books')->insert([
-        //     'name' => 'Minano Nihongo N5',
-        //     'img' => '',
-        //     'category_id' => 1,
+        ]);
 
-        // ]);
+        DB::table('books')->insert([
+            'name' => 'Minano Nihongo N4',
+            'img' => '',
+            'category_id' => 1,
+        ]);
+        DB::table('books')->insert([
+            'name' => 'Minano Nihongo N3',
+            'img' => '',
+            'category_id' => 1,
 
-        // DB::table('books')->insert([
-        //     'name' => 'Minano Nihongo N4',
-        //     'img' => '',
-        //     'category_id' => 1,
-        // ]);
-        // DB::table('books')->insert([
-        //     'name' => 'Minano Nihongo N3',
-        //     'img' => '',
-        //     'category_id' => 1,
-
-        // ]);
+         ]);
     }
 }

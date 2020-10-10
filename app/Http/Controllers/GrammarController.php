@@ -14,9 +14,9 @@ class GrammarController extends Controller
      */
     public function index()
     {
-        $grammar = Grammar::find($id);
+        $grammars = Grammar::all();
 
-        return view ('admins.grammars.show')->with('grammar',$grammar);
+        return view ('admins.grammars.show')->with('grammars',$grammars);
     }
 
     /**

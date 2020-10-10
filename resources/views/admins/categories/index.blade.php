@@ -4,6 +4,7 @@
         .img-fluid {
             width: 50px;
             height: 50px;
+            
         }
 
     </style>
@@ -41,9 +42,9 @@
                                   <i class="fas fa-eye sasm" style="color: black"></i>
                                 </a>
 
-                                {{-- <a href="{{ route('admin.categories.edit', $category->id) }}">
+                                 <a href="{{ route('admin.categories.edit', $category->id) }}">
                                   <i class="fas fa-edit sasm" style="color: black"></i>
-                                </a> --}}
+                                </a> 
 
                                 @csrf
                                 @method('DELETE')

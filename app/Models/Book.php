@@ -18,11 +18,17 @@ class Book extends Model
     ];
 
     protected $cats = [
-        'id'=>'integer',
-        'name'=>'string',
-        'img'=>'string',
-        'category_id'=>'integer',
+        'id' => 'integer',
+        'name' => 'string',
+        'img' => 'string',
+        'category_id' => 'integer',
     ];
+
+    public static $create_rule = [
+        'name' => 'required|string',
+        'icon' => 'required|file',
+    ];
+
 
     public function category()
     {
@@ -32,5 +38,14 @@ class Book extends Model
     public function lessons()
     {
         return $this->hasMany('App\Models\Lesson');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($book) {
+            $book->lessons()->delete();
+        });
     }
 }

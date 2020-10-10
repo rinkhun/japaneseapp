@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator as FacadesValidator;
 use Validator;
 use Redirect;
 use Storage;
@@ -48,7 +49,7 @@ class CategoryController extends Controller
         $category->icon = $icon_url;
 
         $category->save();
-        return Redirect::route('admin.categories.index')->with('success','Đã thêm thành công');
+        return Redirect::route('admin.categories.index')->with('success', 'Đã thêm thành công');
     }
 
     /**
@@ -61,7 +62,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        return view ('admins.categories.show')->with('category',$category);
+        return view('admins.categories.show')->with('category', $category);
     }
 
     /**
@@ -72,7 +73,13 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+
+        if (isset($category)) {
+            return view('admins.categories.edit')->with('category', $category);
+        }
+
+        return redirect()->back()->with('fail', "Category khong ton tai");
     }
 
     /**
@@ -83,8 +90,25 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        Validator::make($request->all(), Category::$update_rule)->validate();
+        $category = Category::find($id);
+        if (isset($category)) {
+            //update category
+            $category->name = $request->input('name');
+            if ($request->has('icon')) {
+                // xoa hinh cu di
+                Storage::disk('public')->delete($category->icon);
+                // luu hinh moi update
+                $icon_path = Storage::disk('public')->put('icons', $request->file('icon'));
+                // update lai duong dan icon cua category
+                $category->icon = $icon_path;
+            }
+
+            $category->save();
+
+            return redirect()->route('admin.categories.index')->with('success', 'Da luu lai category thanh cong');
+        }
     }
 
     /**
@@ -97,12 +121,12 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        if(isset($category)){
+        if (isset($category)) {
             $category->delete();
 
-            return Redirect::back()->with('success','Xoa Category Thanh Cong');
+            return Redirect::back()->with('success', 'Xoa Category Thanh Cong');
         }
-        
-        return Redirect::back()->with('fail','category khong ton tai');
+
+        return Redirect::back()->with('fail', 'category khong ton tai');
     }
 }

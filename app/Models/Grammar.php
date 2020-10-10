@@ -34,4 +34,14 @@ class Grammar extends Model
     {
         return $this->hasMany('App\Models\GrmExample');
     }
+
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($grammar) {
+            $grammar->books()->delete();
+        });
+    }
 }

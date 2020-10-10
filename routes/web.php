@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LessonController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,17 +21,19 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('admin/login',[AdminController::class,'returnViewlogin'])->name('admin.login');
+Route::get('admin/login', [AdminController::class, 'returnViewlogin'])->name('admin.login');
 
-Route::post('admin/login',[AdminController::class,'login'])->name('admin.login');
+Route::post('admin/login', [AdminController::class, 'login'])->name('admin.login');
 
 
-Route::prefix('admin')->name('admin.')->middleware('admin')->group(function(){
-    Route::get('dashboard',[AdminController::class,'dashboard'])->name('dashboard');
-    Route::resource('categories', CategoryController::class);
-    Route::resource('books', BookController::class);
-    Route::get('logout',[AdminController::class,'logout'])->name('logout');
+Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
+    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::resources([
+        'categories' => CategoryController::class,
+        'books'=> BookController::class,
+        'lessons'=> LessonController::class,
+        
+    ]);
+
+    Route::get('logout', [AdminController::class, 'logout'])->name('logout');
 });
-
-
-

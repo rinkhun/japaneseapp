@@ -41,9 +41,9 @@
                                   <i class="fas fa-eye sasm" style="color: black"></i>
                                 </a>
 
-                                {{-- <a href="{{ route('admin.categories.edit', $$book->id) }}">
+                                <a href="{{ route('admin.books.edit', $book->id) }}">
                                   <i class="fas fa-edit sasm" style="color: black"></i>
-                                </a> --}}
+                                </a> 
 
                                 @csrf
                                 @method('DELETE')
