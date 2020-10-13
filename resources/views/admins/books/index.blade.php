@@ -22,6 +22,7 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Category</th>
                 <th scope="col">Name</th>
                 <th scope="col">Img</th>
                 <th scope="col">Action</th>
@@ -31,6 +32,7 @@
             @forelse ($books as $book)
                 <tr>
                     <th scope="row">{{ $loop->index + 1 }}</th>
+                    <td>{{$book->category->name}}</td>
                     <td>{{ $book->name }}</td>
                     <td><img src="{{ Storage::url($book->img) }}" class="img-fluid" alt="hi"></td>
                     <td>

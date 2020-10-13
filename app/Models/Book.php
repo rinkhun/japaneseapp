@@ -26,8 +26,15 @@ class Book extends Model
 
     public static $create_rule = [
         'name' => 'required|string',
-        'icon' => 'required|file',
+        'img' => 'required|file',
+        'category_id' => 'required',
     ];
+
+    public static $edit_rule = [
+        'name' => 'required|string',
+        // 'img' => 'required|file',
+    ];
+   
 
 
     public function category()

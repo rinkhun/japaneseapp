@@ -32,7 +32,11 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
         'categories' => CategoryController::class,
         'books'=> BookController::class,
         'lessons'=> LessonController::class,
-        
+        'conversations'=> ConversationController::class,
+        'exercies'=> ExerciseController::class,
+        'grammar'=> GrammarController::class,
+        'grm_examples'=> GrammarExampleController::class,
+        'histories'=> HistoryController::class,
     ]);
 
     Route::get('logout', [AdminController::class, 'logout'])->name('logout');

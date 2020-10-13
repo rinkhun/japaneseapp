@@ -43,6 +43,7 @@
     <div class="form">
         <div class="form__create">
             <h1 class="form__title"> Name: {{ $book->name }}</h1>
+            <h1 class="form__title"> Of the: {{ $book->name }}</h1>
             <h1 class="form_title"> Picture </h1>
             <td><img src="{{ Storage::url($book->icon) }}" class="img-fluid" alt="không tồn tại"></td>
         </div>
