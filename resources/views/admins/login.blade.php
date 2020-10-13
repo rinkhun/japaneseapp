@@ -14,7 +14,7 @@
         </div>
         <div class="form-group">
             <label for="email">Tài Khoản Email:</label>
-            <input name="email" type="email" class="form-control" placeholder="Enter email" id="email">
+            <input name="email" type="email" class="form-control" placeholder="Enter email" id="email" value="{{old('email')}}">
         </div>
         @error('email')
         <div class="alert alert-danger">{{ $message }}</div>

@@ -29,10 +29,10 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
         $categories = Category::all();
 
-        return view('admins.books.create')->with('categories',$categories);
+        return view('admins.books.create')->with('categories', $categories);
     }
 
     /**
@@ -96,7 +96,7 @@ class BookController extends Controller
     {
         Validator::make($request->all(), Book::$edit_rule)->validate();
         $book = Book::find($id);
-        if (isset($book)) {
+        if (!empty($book)) {
             //update category
             $book->name = $request->input('name');
             if ($request->has('img')) {
@@ -124,7 +124,7 @@ class BookController extends Controller
     {
         $book = Book::find($id);
 
-        if (isset($book)) {
+        if (!empty($book)) {
             $book->delete();
 
             return Redirect::back()->with('success', 'Xoa Category Thanh Cong');

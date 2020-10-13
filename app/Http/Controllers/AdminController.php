@@ -28,7 +28,7 @@ class AdminController extends Controller
             // Authentication passed...
             return Redirect::route('admin.dashboard')->with('login_success','LOGIN SUCCESS');
         }
-        return 'Đăng nhập thất bại';
+        return Redirect::route('admin.login')->withInput(['email' => $request->email]);
     }
 
     public function logout()

@@ -93,7 +93,7 @@ class CategoryController extends Controller
     {   
         Validator::make($request->all(), Category::$update_rule)->validate();
         $category = Category::find($id);
-        if (isset($category)) {
+        if (!empty($category)) {
             //update category
             $category->name = $request->input('name');
             if ($request->has('icon')) {
@@ -121,7 +121,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        if (isset($category)) {
+        if (!empty($category)) {
             $category->delete();
 
             return Redirect::back()->with('success', 'Xoa Category Thanh Cong');
