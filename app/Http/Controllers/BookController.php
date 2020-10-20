@@ -82,7 +82,7 @@ class BookController extends Controller
             return view('admins.books.edit')->with('book', $book);
         }
 
-        return redirect()->back()->with('fail', "Category khong ton tai");
+        return redirect()->back()->with('fail', "Book khong ton tai");
     }
 
     /**

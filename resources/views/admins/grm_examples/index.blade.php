@@ -4,14 +4,13 @@
         .img-fluid {
             width: 50px;
             height: 50px;
-            
         }
 
     </style>
 @endsection
 @section('content')
-    <h3>Categories Manage</h3>
-    <a href="{{ route('admin.categories.create') }}" class="btn btn-secondary" role="button">Add Category</a>
+    <h3>Grm_examples Manage</h3>
+    <a href="{{ route('admin.grammars.create') }}" class="btn btn-secondary" role="button">Add Grm_examples</a>
     <table class="table">
         <br>
         @if (session('success'))
@@ -23,28 +22,30 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Icon</th>
+                <th scope="col">Grammar</th>
+                <th scope="col">Japanese</th>
+                <th scope="col">vietnamese</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($categories as $category)
+            @forelse ($grm_examples as $grm_example)
                 <tr>
-                    <th scope="row">{{ $categories->firstItem() + $loop->index }}</th>
-                    <td>{{ $category->name }}</td>
-                    <td><img src="{{ Storage::url($category->icon) }}" class="img-fluid" alt="hi"></td>
+                    <td scope="row">{{ $loop->index + 1 }}</td>
+                    <td>{{ $grm_example->grammar->title}}</td>
+                    <td>{{ $grm_example->japanese }}</td>                   
+                    <td>{{ $grm_example->vietnamese }}</td>
                     <td>
                         <div class="row">
-                           <form method="POST" action="{{ route('admin.categories.destroy', ['category' => $category]) }}">
+                           <form method="POST" action="{{ route('admin.grm_examples.destroy', ['grm_example' => $grm_example]) }}">
 
-                                <a href="{{ route('admin.categories.show', $category->id) }}" title="show">
+                                <a href="{{ route('admin.grm_examples.show', $grm_example->id) }}" title="show">
                                   <i class="fas fa-eye sasm" style="color: black"></i>
                                 </a>
 
-                                 <a href="{{ route('admin.categories.edit', $category->id) }}">
+                                <a href="{{ route('admin.grm_examples.edit', $grm_example->id) }}">
                                   <i class="fas fa-edit sasm" style="color: black"></i>
-                                </a> 
+                                </a>
 
                                 @csrf
                                 @method('DELETE')
@@ -57,11 +58,8 @@
                     </td>
                 </tr>
             @empty
-                <p>Categories not found</p>
+
             @endforelse
         </tbody>
     </table>
-
-
-    {{ $categories->links("pagination::bootstrap-4") }}
 @endsection

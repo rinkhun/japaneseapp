@@ -22,17 +22,23 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Category</th>
+                <th scope="col">Book</th>
                 <th scope="col">Name</th>
                 <th scope="col">Img</th>
+                <th scope="col">Description</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
             @forelse ($lessons as $lesson)
                 <tr>
-                    <th scope="row">{{ $loop->index + 1 }}</th>
+                    <td>{{ $lessons->firstItem() + $loop->index  }}</td>
+                    <td>{{ $lesson->book->category->name }}</td>
+                    <td>{{ $lesson->book->name }}</td>
                     <td>{{ $lesson->name }}</td>
                     <td><img src="{{ Storage::url($lesson->img) }}" class="img-fluid" alt="hi"></td>
+                    <td>{{ $lesson->description }}</td>
                     <td>
                         <div class="row">
                            <form method="POST" action="{{ route('admin.lessons.destroy', ['lesson' => $lesson]) }}">
@@ -41,7 +47,7 @@
                                   <i class="fas fa-eye sasm" style="color: black"></i>
                                 </a>
 
-                                 <a href="{{ route('admin.lessons.edit', $$book->id) }}">
+                                 <a href="{{ route('admin.lessons.edit', $lesson->id) }}">
                                   <i class="fas fa-edit sasm" style="color: black"></i>
                                 </a> 
 

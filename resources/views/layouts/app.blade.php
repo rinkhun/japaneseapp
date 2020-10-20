@@ -27,8 +27,12 @@
 
         .dashboard__button a {
             margin:10px;
-
+    
         }
+
+        body {
+  background-color: white ;
+}
 
     </style>
     @yield('css')
@@ -43,17 +47,18 @@
         <a href="{{route('admin.categories.index')}}" class="btn btn-info" role="button" aria-pressed="true">Categories</a>
         <a href="{{route('admin.books.index')}}" class="btn btn-info" role="button" aria-pressed="true">Books</a>
         <a href="{{route('admin.lessons.index')}}" class="btn btn-info" role="button" aria-pressed="true">Lessons</a>
-        <a href="{{route('admin.books.index')}}" class="btn btn-info" role="button" aria-pressed="true">Grammars</a>
-        <a href="{{route('admin.books.index')}}" class="btn btn-info" role="button" aria-pressed="true">Grm_examples</a>
-        <a href="{{route('admin.books.index')}}" class="btn btn-info" role="button" aria-pressed="true">Vcb_examples</a>
-        <a href="{{route('admin.books.index')}}" class="btn btn-info" role="button" aria-pressed="true">Kanjis</a>
-        <a href="{{route('admin.books.index')}}" class="btn btn-info" role="button" aria-pressed="true">Knj_examples</a>
-        <a href="{{route('admin.books.index')}}" class="btn btn-info" role="button" aria-pressed="true">Conversations</a>
-        <a href="{{route('admin.books.index')}}" class="btn btn-info" role="button" aria-pressed="true">Exercices</a>
-        <a href="{{route('admin.books.index')}}" class="btn btn-info" role="button" aria-pressed="true">Questions</a>
-        <a href="{{route('admin.books.index')}}" class="btn btn-info" role="button" aria-pressed="true">Histories</a>
-        <a href="{{route('admin.books.index')}}" class="btn btn-info" role="button" aria-pressed="true">Users</a>
-        <a href="{{route('admin.books.index')}}" class="btn btn-info" role="button" aria-pressed="true">Salers</a>
+        <a href="{{route('admin.grammars.index')}}" class="btn btn-info" role="button" aria-pressed="true">Grammars</a>
+        <a href="{{route('admin.grm_examples.index')}}" class="btn btn-info" role="button" aria-pressed="true">Grm_examples</a>
+        <a href="{{route('admin.vocabularies.index')}}" class="btn btn-info" role="button" aria-pressed="true">Vocabularies</a>
+        <a href="{{route('admin.vcb_examples.index')}}" class="btn btn-info" role="button" aria-pressed="true">Vcb_examples</a>
+        <a href="{{route('admin.kanjis.index')}}" class="btn btn-info" role="button" aria-pressed="true">Kanjis</a>
+        <a href="{{route('admin.knj_examples.index')}}" class="btn btn-info" role="button" aria-pressed="true">Knj_examples</a>
+        <a href="{{route('admin.conversations.index')}}" class="btn btn-info" role="button" aria-pressed="true">Conversations</a>
+        <a href="{{route('admin.exercises.index')}}" class="btn btn-info" role="button" aria-pressed="true">Exercises</a>
+        <a href="{{route('admin.questions.index')}}" class="btn btn-info" role="button" aria-pressed="true">Questions</a>
+        <a href="{{route('admin.histories.index')}}" class="btn btn-info" role="button" aria-pressed="true">Histories</a>
+        <a href="{{route('admin.users.index')}}" class="btn btn-info" role="button" aria-pressed="true">Users</a>
+        <a href="{{route('admin.salers.index')}}" class="btn btn-info" role="button" aria-pressed="true">Salers</a>
     </div>
     @endauth
     {{--Body --}}

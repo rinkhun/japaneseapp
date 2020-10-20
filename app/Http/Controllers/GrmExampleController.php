@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Grammar;
 use Illuminate\Http\Request;
+use App\Models\GrmExample;
 
-class GrammarController extends Controller
+class GrmExampleController extends Controller
 {
     private $numberItemPerPage = 20 ;
     /**
@@ -15,11 +15,11 @@ class GrammarController extends Controller
      */
     public function index()
     {
-        $grammars = Grammar::with('lesson.book.category')->paginate($this->numberItemPerPage);
+        $grm_examples = GrmExample::with('grammar')->paginate($this->numberItemPerPage);
         
-        // return $grammars[0];
+        // return $grm_examples;
 
-        return view ('admins.grammars.index' , compact('grammars') );
+        return view ('admins.grm_examples.index' , compact('grm_examples') );
 
     }
 

@@ -24,6 +24,13 @@ class Lesson extends Model
         'book_id' => 'integer',
     ];
 
+    public static $create_rule =[
+        'book_id' => 'exists:books,id',
+        'name' => 'required|string',
+        'img' => 'required|file',
+        'description' => 'required|string',
+    ];
+
     public function book()
     {
         return $this->belongsTo('App\Models\Book');

@@ -22,28 +22,36 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Category Image</th>
+                <th scope="col">Book</th>
+                <th scope="col">Lesson</th>
                 <th scope="col">Title</th>
                 <th scope="col">Mean</th>
+                <th scope="col">Using</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
             @forelse ($grammars as $grammar)
                 <tr>
-                    <th scope="row">{{ $loop->index + 1 }}</th>
+                    <td scope="row">{{ $loop->index + 1 }}</td>
+                    <td><img src="{{ Storage::url( $grammar->lesson->book->category->icon) }}" class="img-fluid" alt="không tồn tại"></td>
+                    <td>{{$grammar->lesson->book->name}}</td>
+                     <td>{{$grammar->lesson->name}}</td>
                     <td>{{ $grammar->title }}</td>
-                    <td><img src="{{ Storage::url($grammar->mean) }}" class="img-fluid" alt="hi"></td>
+                    <td>{{ $grammar->mean }}</td>
+                    <td>{{ $grammar->using }}</td>
                     <td>
                         <div class="row">
                            <form method="POST" action="{{ route('admin.grammars.destroy', ['grammar' => $grammar]) }}">
 
-                                <a href="{{ route('admin.grammars.show', $category->id) }}" title="show">
+                                <a href="{{ route('admin.grammars.show', $grammar->id) }}" title="show">
                                   <i class="fas fa-eye sasm" style="color: black"></i>
                                 </a>
 
-                                {{-- <a href="{{ route('admin.grammars.edit', $category->id) }}">
+                                <a href="{{ route('admin.grammars.edit', $grammar->id) }}">
                                   <i class="fas fa-edit sasm" style="color: black"></i>
-                                </a> --}}
+                                </a>
 
                                 @csrf
                                 @method('DELETE')

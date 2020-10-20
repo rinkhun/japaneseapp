@@ -16,9 +16,12 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // Numner item per page
+    private $numberItemPerPage = 10 ;
+
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate($this->numberItemPerPage);
 
         return view('admins.categories.index')->with('categories', $categories);
     }

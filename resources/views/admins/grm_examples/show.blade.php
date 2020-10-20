@@ -35,17 +35,16 @@
         .form__title {
             text-align: center;
         }
-             
+
     </style>
-    
 @endsection
 
 @section('content')
     <div class="form">
         <div class="form__create">
-            <h1 class="form__title"> Name: {{ $category->name }}</h1>
+            <h1 class="form__title"> Name: {{ $grm_example->name }}</h1>
             <h1 class="form_title"> Picture </h1>
-            <td><img src="{{ Storage::url($category->icon) }}" class="img-fluid" alt="không tồn tại"></td>
+            <td><img src="{{ Storage::url($grm_example->img) }}" class="img-fluid" alt="không tồn tại"></td>
         </div>
     </div>
 @endsection
